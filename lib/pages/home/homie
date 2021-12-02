@@ -1,0 +1,185 @@
+
+
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:carousel_slider/carousel_slider.dart';
+
+class HomePage extends StatelessWidget {
+  const HomePage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: ListView(
+        children: <Widget>[
+          Stack(
+            children: [
+              Container(
+                height: 200,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.vertical(
+                      bottom: Radius.circular(50),
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                          color: Colors.grey, spreadRadius: 3, blurRadius: 5)
+                    ],
+                    image: DecorationImage(
+                        image: AssetImage('images/img_home.png'),
+                        fit: BoxFit.cover)),
+              ),
+            ],
+          ),
+          Padding(
+            padding: EdgeInsets.only(
+                // top: 153,
+                left: 20,
+                right: 20),
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+              height: 100,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15),
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                    blurRadius: 5,
+                    color: Colors.grey,
+                    // offset: Offset(5, 5),
+                  ),
+                ],
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Selamat Datang',
+                        style: GoogleFonts.montserrat(
+                          textStyle: TextStyle(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w500,
+                              color: Color(0xff0E2392)),
+                        ),
+                      ),
+                      Text(
+                        'Fulan',
+                        style: GoogleFonts.montserrat(
+                          textStyle: TextStyle(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w500,
+                              color: Color(0xff0E2392)),
+                        ),
+                      ),
+                    ],
+                  ),
+                  // SizedBox(width: 63,),
+
+                  // Bisa juga pakai spacer
+                  Spacer(
+                    flex: 3,
+                  ),
+
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Saldo Bulan Ini',
+                        style: GoogleFonts.montserrat(
+                          textStyle: TextStyle(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w500,
+                              color: Color(0xff0E2392)),
+                        ),
+                      ),
+                      Text(
+                        '1000.000',
+                        style: GoogleFonts.montserrat(
+                          textStyle: TextStyle(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w500,
+                              color: Color(0xff0E2392)),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          Padding(
+            padding: const EdgeInsets.only(
+              left: 20,
+            ),
+            child: Text(
+              "Konten Harian",
+              style: GoogleFonts.montserrat(
+                textStyle: TextStyle(
+                  fontSize: 18,
+                ),
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Container(
+            child: CarouselSlider(
+              items: [
+                Container(
+                  width: MediaQuery.of(context).size.width,
+                  margin: EdgeInsets.symmetric(horizontal: 5),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(15),
+                    image: DecorationImage(
+                        image: AssetImage('images/img_konten.jpg'),
+                        fit: BoxFit.cover),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      Text(
+                        'Kajian',
+                        style: GoogleFonts.montserrat(
+                          textStyle: TextStyle(
+                            fontSize: 18,
+                          ),
+                        ),
+                      ),
+                      Text(
+                        'Isi Konten',
+                        style: GoogleFonts.montserrat(
+                          textStyle: TextStyle(
+                            fontSize: 18,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+              ],
+              options: CarouselOptions(
+                height: 200,
+                enlargeCenterPage: true,
+                autoPlayCurve: Curves.fastOutSlowIn,
+                enableInfiniteScroll: true,
+                viewportFraction: 0.7,
+                autoPlay: true,
+                autoPlayInterval: Duration(seconds: 5),
+                autoPlayAnimationDuration: Duration(milliseconds: 800),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
